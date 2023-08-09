@@ -1,11 +1,12 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class GameField {
 
     public static String[][] createField() {
-        String[][] field = new String[11][11];
-        for (int i = 1; i < field.length; i++) {
-            for (int j = 1; j < field.length; j++) {
+        String[][] field = new String[10][10];
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field.length; j++) {
                 field[i][j] = "☐";
             }
         }
@@ -14,9 +15,9 @@ public class GameField {
 
     public static void printField(String[][] fieldToPrint) {
         System.out.println();
-        for (int i = 1; i < fieldToPrint.length; i++) {
-            for (int j = 1; j < fieldToPrint.length; j++) {
-                System.out.print(fieldToPrint[i][j] + "\t");
+        for (String[] strings : fieldToPrint) {
+            for (int j = 0; j < fieldToPrint.length; j++) {
+                System.out.print(strings[j] + "\t");
             }
             System.out.println();
         }
@@ -26,15 +27,43 @@ public class GameField {
         Scanner scanner = new Scanner(System.in);
         String coordinates;
         String[] coordinatesArray, coords;
+        int x = 0, y = 0;
         int counter = 1;
         String numberName = "первого";
 
         System.out.println("Координаты для четырёхпалубного корабля: ");
         coordinates = scanner.nextLine();
         coordinatesArray = coordinates.split(";");
-        for (String coordsString : coordinatesArray) {
+        for (String coordsString : coordinatesArray) { // добавление корабля
             coords = coordsString.split(",");
-            gameField[Integer.parseInt(coords[0])][Integer.parseInt(coords[1])] = "\uD83D\uDEA2"; // добавление корабля
+            x = Integer.parseInt(coords[0]);
+            y = Integer.parseInt(coords[1]);
+
+            gameField[x][y] = "\uD83D\uDEA2";
+            if (!Objects.equals(gameField[x][y + 1], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
+            if (!Objects.equals(gameField[x][y - 1], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
+            if (!Objects.equals(gameField[x + 1][y + 1], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
+            if (!Objects.equals(gameField[x + 1][y], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
+            if (!Objects.equals(gameField[x + 1][y - 1], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
+            if (!Objects.equals(gameField[x + - 1][y - 1], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
+            if (!Objects.equals(gameField[x - 1][y], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
+            if (!Objects.equals(gameField[x - 1][y + 1], "\uD83D\uDEA2")) {
+                gameField[x + 1][y] = "▨";
+            }
         }
 
         while (counter <= 2) {
@@ -44,9 +73,38 @@ public class GameField {
             System.out.println("Координаты для " + numberName + " трёхпалубного корабля: ");
             coordinates = scanner.nextLine();
             coordinatesArray = coordinates.split(";");
-            for (String coordsString : coordinatesArray) {
+            for (String coordsString : coordinatesArray) { // добавление корабля
                 coords = coordsString.split(",");
-                gameField[Integer.parseInt(coords[0])][Integer.parseInt(coords[1])] = "\uD83D\uDEA2"; // добавление корабля
+                x = Integer.parseInt(coords[0]);
+                y = Integer.parseInt(coords[1]);
+
+                if (gameField[x][y].equals("☐")) {
+                    gameField[x][y] = "\uD83D\uDEA2";
+                    if (!Objects.equals(gameField[x][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + - 1][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x - 1][y], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x - 1][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                }
             }
             counter++;
         }
@@ -61,9 +119,39 @@ public class GameField {
             System.out.println("Координаты для " + numberName + " двухпалубного корабля: ");
             coordinates = scanner.nextLine();
             coordinatesArray = coordinates.split(";");
-            for (String coordsString : coordinatesArray) {
+            for (String coordsString : coordinatesArray) { // добавление корабля
                 coords = coordsString.split(",");
-                gameField[Integer.parseInt(coords[0])][Integer.parseInt(coords[1])] = "\uD83D\uDEA2"; // добавление корабля
+
+                x = Integer.parseInt(coords[0]);
+                y = Integer.parseInt(coords[1]);
+
+                if (gameField[x][y].equals("☐")) {
+                    gameField[x][y] = "\uD83D\uDEA2";
+                    if (!Objects.equals(gameField[x][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + - 1][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x - 1][y], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x - 1][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                }
             }
             counter++;
         }
@@ -79,9 +167,39 @@ public class GameField {
             System.out.println("Координаты для " + numberName + " однопалубного корабля: ");
             coordinates = scanner.nextLine();
             coordinatesArray = coordinates.split(";");
-            for (String coordsString : coordinatesArray) {
+            for (String coordsString : coordinatesArray) { // добавление корабля
                 coords = coordsString.split(",");
-                gameField[Integer.parseInt(coords[0])][Integer.parseInt(coords[1])] = "\uD83D\uDEA2"; // добавление корабля
+
+                x = Integer.parseInt(coords[0]);
+                y = Integer.parseInt(coords[1]);
+
+                if (gameField[x][y].equals("☐")) {
+                    gameField[x][y] = "\uD83D\uDEA2";
+                    if (!Objects.equals(gameField[x][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + 1][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x + - 1][y - 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x - 1][y], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                    if (!Objects.equals(gameField[x - 1][y + 1], "\uD83D\uDEA2")) {
+                        gameField[x + 1][y] = "▨";
+                    }
+                }
             }
             counter++;
         }
