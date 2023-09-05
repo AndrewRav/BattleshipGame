@@ -1,12 +1,12 @@
-public abstract class Ship {
+public class Ship {
     private int deck;
     private String coordinates;
     private String[] coordinatesArray;
 
     public Ship(String coordinates) {
-        this.coordinatesArray = coordinates.split(";");
-        this.deck = coordinatesArray.length;
         this.coordinates = coordinates;
+        this.coordinatesArray = coordinates.split(";"); // [1,2]; [3,4]; [5,6] ...
+        this.deck = coordinatesArray.length;
     }
 
     public int getDeck() {
@@ -33,5 +33,64 @@ public abstract class Ship {
         this.coordinatesArray = coordinatesArray;
     }
 
-    public abstract String[][] createShip(String[][] gameField);
+    public void createShip(String[][] gameField) {
+        // Создание палуб
+        int x = 0, y = 0;
+        for (String deckCoordinate : coordinatesArray) {
+            x = Integer.parseInt(deckCoordinate.split(",")[0]);
+            y = Integer.parseInt(deckCoordinate.split(",")[1]);
+
+            if (gameField[x][y].equals("☐")) {
+                gameField[x][y] = "\uD83D\uDEA2";
+            }
+        }
+        // Добавление ореол вокруг палуб
+        for (String deckCoordinate : coordinatesArray) {
+            x = Integer.parseInt(deckCoordinate.split(",")[0]);
+            y = Integer.parseInt(deckCoordinate.split(",")[1]);
+
+            if (y < 9) {
+                if (gameField[x][y + 1] != "\uD83D\uDEA2") {
+                    gameField[x][y + 1] = "▨";
+                }
+                if (x < 9) {
+                    if (gameField[x + 1][y + 1] != "\uD83D\uDEA2") {
+                        gameField[x + 1][y + 1] = "▨";
+                    }
+                }
+                if (x > 0) {
+                    if (gameField[x - 1][y + 1] != "\uD83D\uDEA2") {
+                        gameField[x - 1][y + 1] = "▨";
+                    }
+                }
+            }
+
+            if (y > 0) {
+                if (gameField[x][y - 1] != "\uD83D\uDEA2") {
+                    gameField[x][y - 1] = "▨";
+                }
+                if (x > 0) {
+                    if (gameField[x - 1][y - 1] != "\uD83D\uDEA2") {
+                        gameField[x - 1][y - 1] = "▨";
+                    }
+                }
+                if (x < 9) {
+                    if (gameField[x + 1][y - 1] != "\uD83D\uDEA2") {
+                        gameField[x + 1][y - 1] = "▨";
+                    }
+                }
+            }
+
+            if (x < 9) {
+                if (gameField[x + 1][y] != "\uD83D\uDEA2") {
+                    gameField[x + 1][y] = "▨";
+                }
+            }
+            if (x > 0) {
+                if (gameField[x - 1][y] != "\uD83D\uDEA2") {
+                    gameField[x - 1][y] = "▨";
+                }
+            }
+        }
+    }
 }

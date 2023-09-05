@@ -5,9 +5,8 @@ public class SingleDeck extends Ship {
     }
 
     @Override
-    public String[][] createShip(String[][] gameField) {
+    public void createShip(String[][] gameField) {
 
-        return new String[0][];
     }
 
 }

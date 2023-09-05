@@ -5,9 +5,7 @@ public class FourDeck extends Ship {
     }
 
     @Override
-    public String[][] createShip(String[][] gameField) {
-
-        return new String[0][];
+    public void createShip(String[][] gameField) { // Возвращает игровое поле вместе с созданным кораблём
     }
 
 }
