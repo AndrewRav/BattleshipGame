@@ -1,10 +1,8 @@
 public class Ship {
     private int deck;
-    private String coordinates;
     private String[] coordinatesArray;
 
     public Ship(String coordinates) {
-        this.coordinates = coordinates;
         this.coordinatesArray = coordinates.split(";"); // [1,2]; [3,4]; [5,6] ...
         this.deck = coordinatesArray.length;
     }
@@ -15,14 +13,6 @@ public class Ship {
 
     public void setDeck(int deck) {
         this.deck = deck;
-    }
-
-    public String getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
     }
 
     public String[] getCoordinatesArray() {
