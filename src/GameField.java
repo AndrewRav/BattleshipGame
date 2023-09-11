@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameField {
@@ -12,7 +13,7 @@ public class GameField {
         return field;
     }
 
-    public static void fillField(String[][] gameField) {
+    public static void fillField(String[][] gameField, ArrayList<Ship> ships) {
         Scanner scanner = new Scanner(System.in);
         try {
             // Создание четырёх однопалубных кораблей
@@ -71,11 +72,26 @@ public class GameField {
             Ship fourDeckShip = new Ship(coordinates9);
             fourDeckShip.createShip(gameField, 4);
 
+            ships.add(oneDeckShip_1);
+            ships.add(oneDeckShip_2);
+            ships.add(oneDeckShip_3);
+            ships.add(oneDeckShip_4);
+
+            ships.add(twoDeckShip_1);
+            ships.add(twoDeckShip_2);
+            ships.add(twoDeckShip_3);
+
+            ships.add(threeDeckShip_1);
+            ships.add(threeDeckShip_2);
+
+            ships.add(fourDeckShip);
+
             scanner.close();
 
         } catch (InputCoordinatesException e) {
             e.getMessage();
-            fillField(gameField);
+            ships.clear();
+            fillField(gameField, ships);
         }
     }
 
