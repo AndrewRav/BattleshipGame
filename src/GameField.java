@@ -17,7 +17,6 @@ public class GameField {
         Scanner scanner = new Scanner(System.in);
         try {
             // Создание четырёх однопалубных кораблей
-            // Колхоз, конечно, но куда без него :)
 
             System.out.println("Введите координаты для 1-ого однопалубного корабля:");
             String coordinates = scanner.nextLine();

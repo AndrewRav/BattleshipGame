@@ -19,19 +19,21 @@ public class Ship {
         return deck;
     }
 
+    public void setDeck(int deck) {
+        this.deck = deck;
+    }
+
     public String[] getCoordinatesArray() {
         return coordinatesArray;
     }
 
-    public ArrayList<Integer> getDeckCoordinatesList() {
-        return deckCoordinatesList;
-    }
-
     public void createShip(String[][] gameField, int requiredDeckNumber) throws InputCoordinatesException {
+
         // Проверка введённых координат
         if (requiredDeckNumber != deck) {
             throw new InputCoordinatesException("Вы ввели неверное число палуб, попробуйте ещё раз");
         }
+
         // Создание палуб
         int x = 0, y = 0;
         for (String deckCoordinate : coordinatesArray) {
@@ -52,7 +54,8 @@ public class Ship {
                 throw new InputCoordinatesException("Место, в которую вы хотите поставить палубу, уже занято");
             }
         }
-        // Проверка кораблей
+
+        // Валидация кораблей
         int temp = deckCoordinatesList.get(0);
         for (int i = 1; i < deckCoordinatesList.size(); i++) {
             if (i % 2 == 0) {
