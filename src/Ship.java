@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class Ship {
     private int deck;
@@ -79,44 +79,44 @@ public class Ship {
             y = Integer.parseInt(deckCoordinate.split(",")[1]);
 
             if (y < 9) {
-                if (gameField[x][y + 1] != "\uD83D\uDEA2") {
+                if (!Objects.equals(gameField[x][y + 1], "\uD83D\uDEA2")) {
                     gameField[x][y + 1] = "▨";
                 }
                 if (x < 9) {
-                    if (gameField[x + 1][y + 1] != "\uD83D\uDEA2") {
+                    if (!Objects.equals(gameField[x + 1][y + 1], "\uD83D\uDEA2")) {
                         gameField[x + 1][y + 1] = "▨";
                     }
                 }
                 if (x > 0) {
-                    if (gameField[x - 1][y + 1] != "\uD83D\uDEA2") {
+                    if (!Objects.equals(gameField[x - 1][y + 1], "\uD83D\uDEA2")) {
                         gameField[x - 1][y + 1] = "▨";
                     }
                 }
             }
 
             if (y > 0) {
-                if (gameField[x][y - 1] != "\uD83D\uDEA2") {
+                if (!Objects.equals(gameField[x][y - 1], "\uD83D\uDEA2")) {
                     gameField[x][y - 1] = "▨";
                 }
                 if (x > 0) {
-                    if (gameField[x - 1][y - 1] != "\uD83D\uDEA2") {
+                    if (!Objects.equals(gameField[x - 1][y - 1], "\uD83D\uDEA2")) {
                         gameField[x - 1][y - 1] = "▨";
                     }
                 }
                 if (x < 9) {
-                    if (gameField[x + 1][y - 1] != "\uD83D\uDEA2") {
+                    if (!Objects.equals(gameField[x + 1][y - 1], "\uD83D\uDEA2")) {
                         gameField[x + 1][y - 1] = "▨";
                     }
                 }
             }
 
             if (x < 9) {
-                if (gameField[x + 1][y] != "\uD83D\uDEA2") {
+                if (!Objects.equals(gameField[x + 1][y], "\uD83D\uDEA2")) {
                     gameField[x + 1][y] = "▨";
                 }
             }
             if (x > 0) {
-                if (gameField[x - 1][y] != "\uD83D\uDEA2") {
+                if (!Objects.equals(gameField[x - 1][y], "\uD83D\uDEA2")) {
                     gameField[x - 1][y] = "▨";
                 }
             }

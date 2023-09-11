@@ -17,7 +17,6 @@ public class GameField {
         Scanner scanner = new Scanner(System.in);
         try {
             // Создание четырёх однопалубных кораблей
-
             System.out.println("Введите координаты для 1-ого однопалубного корабля:");
             String coordinates = scanner.nextLine();
             Ship oneDeckShip_1 = new Ship(coordinates);
@@ -88,7 +87,6 @@ public class GameField {
             scanner.close();
 
         } catch (InputCoordinatesException e) {
-            e.getMessage();
             ships.clear();
             fillField(gameField, ships);
         }
